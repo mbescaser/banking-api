@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"module": "es6",
+		"esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "esnext",
+		"noImplicitAny": true,
+    "moduleResolution": "node",
+		"preserveConstEnums": true,
+		"outDir": "./build",
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"baseUrl": "./",
+    "paths": {
+      "@src": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@config/*": ["./src/config/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@models/*": ["./src/models/*"],
+      "@utils/*": ["./src/utils/*"],
+    }
+	},
+	"include": ["src/**/*", "test/**/*"],
+	"exclude": ["node_modules", ".webpack", "migrations"]
+}

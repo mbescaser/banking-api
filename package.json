@@ -1,0 +1,58 @@
+{
+  "name": "banking-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "serverless-bundle test",
+    "start": "serverless offline",
+    "migrate": "node-pg-migrate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.73",
+    "@types/dedent": "^0.7.0",
+    "@types/jest": "^26.0.22",
+    "@types/pg": "^7.14.11",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "aws-lambda": "^1.0.6",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "node-pg-migrate": "^5.9.0",
+    "prettier": "^2.2.1",
+    "serverless": "^2.34.0",
+    "serverless-bundle": "^4.2.2",
+    "serverless-dotenv-plugin": "^3.9.0",
+    "serverless-offline": "^6.9.0",
+    "source-map-support": "^0.5.19"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.1",
+    "dedent": "^0.7.0",
+    "hashids": "^2.2.8",
+    "nanoid": "^3.1.22",
+    "pg": "^8.5.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts, tsx}"
+    ],
+    "moduleNameMapper": {
+      "@src(.*)$": "<rootDir>/src/$1",
+      "@components(.*)$": "<rootDir>/src/components/$1",
+      "@config(.*)$": "<rootDir>/src/config/$1",
+      "@interfaces(.*)$": "<rootDir>/src/interfaces/$1",
+      "@models(.*)$": "<rootDir>/src/models/$1",
+      "@utils(.*)$": "<rootDir>/src/utils/$1"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
+  }
+}

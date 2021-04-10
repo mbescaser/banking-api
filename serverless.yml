@@ -1,0 +1,99 @@
+service: banking-api
+
+plugins:
+  - serverless-bundle
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  bundle:
+    aliases:
+      - '@utils': src/utils
+      - '@components': src/components
+    ignorePackages:
+      - pg-native
+  serverless-offline:
+    useChildProcesses: true
+    noPrependStageInUrl: true
+
+package:
+  exclude:
+    - node_modules/**/*
+
+provider:
+  name: aws
+  apiName: banking-api
+  runtime: nodejs12.x
+  stage: ${self:custom.stage}
+  httpApi:
+    cors:
+      allowedHeaders:
+        - Content-Type
+      allowedMethods:
+        - GET
+        - POST
+        - PATCH
+        - PUT
+        - DELETE
+
+functions:
+  main:
+    memorySize: 256
+    timeout: 60
+    handler: src/handler.main
+    events:
+      - http:
+          path: /customers
+          method: GET
+          cors:
+            enabled: true
+            origin: '*'
+            method: GET
+            headers:
+              - Content-Type
+      - http:
+          path: /customers/{customerId}/accounts
+          method: GET
+          cors:
+            enabled: true
+            origin: '*'
+            method: GET
+            headers:
+              - Content-Type
+      - http:
+          path: /customers/{customerId}/accounts
+          method: POST
+          cors:
+            enabled: true
+            origin: '*'
+            method: POST
+            headers:
+              - Content-Type
+      - http:
+          path: /customers/{customerId}/accounts/{accountId}
+          method: GET
+          cors:
+            enabled: true
+            origin: '*'
+            method: GET
+            headers:
+              - Content-Type
+      - http:
+          path: /customers/{customerId}/accounts/{accountId}/transactions
+          method: GET
+          cors:
+            enabled: true
+            origin: '*'
+            method: GET
+            headers:
+              - Content-Type
+      - http:
+          path: /customers/{customerId}/transfers
+          method: POST
+          cors:
+            enabled: true
+            origin: '*'
+            method: POST
+            headers:
+              - Content-Type
