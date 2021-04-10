@@ -5,7 +5,6 @@ jspm_packages
 # Serverless directories
 .serverless
 .webpack
-.env
 event-*
 
 #unit test
