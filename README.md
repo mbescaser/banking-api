@@ -8,11 +8,6 @@
 -   [x] Retrieve balances for a given account.
 -   [x] Retrieve transfer history for a given account.
 
-## API Installation
-```bash
-npm i -g serverless
-npm i
-```
 ## API Documentation
 [List of API's available](https://bankingapi7.docs.apiary.io/#)
 ## Database Installation
@@ -26,18 +21,19 @@ postgres=# ALTER USER banking WITH PASSWORD 'banking_api';
 ```
 ## Usage Scripts
 ```bash
+npm i -g serverless
+npm i
+npm run migrate up
 npm run start
-npm test
 ```
 ## Database Migration
 ```bash
-npm run migrate up
-npm run migrate down
+npm run migrate up # Setup tables and prerequisite data
+npm run migrate down # Teardown tables and all data
 ```
-## Start API
+## Unit Test
 ```bash
-npm run migrate up
-npm run start
+npm test
 ```
 ## Notes
 You can ignore this log after you execute `npm run start` and go directly to access to the API's, it's more on eslint integration with typescript that's why it will not be an hindrance to the API itself.
